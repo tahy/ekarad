@@ -12,7 +12,7 @@ def setup_database():
     """
 
     items = [
-        ( 1, str(time()), 'Радищева 10', '100'),
+        ( 1, str(time()), 'Малопрудная 5', '100'),
         ( 2, str(time()), 'Ленина 66', '45'),
         ( 3, str(time()), 'Космонавтов 41', '11'),
         ( 4, str(time()), 'Куйбышева 18', '10'),
@@ -39,10 +39,7 @@ class Root:
         with sqlite3.connect(DB_STRING) as c:
             r = c.execute("SELECT created, location, value FROM statistics")
         return {'items': r.fetchall()}
-
-    @cherrypy.expose(["crossdomain.xml"])
-    def crossdomain(self):
-        return {}
+        
 
     @cherrypy.expose
     def informer(self, value=None):
